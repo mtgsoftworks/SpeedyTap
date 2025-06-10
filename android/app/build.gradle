@@ -28,16 +28,16 @@ android {
     signingConfigs {
         debug {
             // Kullanıcının keystore'u ile debug signing
-            keyAlias 'speedytap'
-            keyPassword 'speedytap123'
-            storeFile file('../../speedytap.keystore')
-            storePassword 'speedytap123'
+            keyAlias 'androidkey'
+            keyPassword 'android'
+            storeFile file('../../android.keystore')
+            storePassword 'android'
         }
         release {
-            keyAlias 'speedytap'
-            keyPassword 'speedytap123'
-            storeFile file('../../speedytap.keystore')
-            storePassword 'speedytap123'
+            keyAlias 'androidkey'
+            keyPassword 'android'
+            storeFile file('../../android.keystore')
+            storePassword 'android'
         }
     }
 

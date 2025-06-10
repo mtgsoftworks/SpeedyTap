@@ -214,13 +214,27 @@ body {
 
 /* Mobile responsive */
 @media (max-width: 480px) {
+  .game-pause, .game-over, .level-passed, .about-page {
+    padding: 15px 10px;
+    align-items: flex-start;
+    padding-top: 50px;
+  }
+  
   .pause-content, .game-over-content, .level-passed-content, .about-content {
-    margin: 0 10px;
-    padding: 20px;
+    margin: 0;
+    padding: 20px 15px;
+    max-width: 100%;
+    border-radius: 15px;
+    box-sizing: border-box;
+  }
+  
+  .pause-header, .game-over-header, .level-passed-header, .about-header {
+    margin-bottom: 25px;
   }
   
   .pause-header h2, .game-over-header h2, .level-passed-header h2, .about-header h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    line-height: 1.2;
   }
   
   .score-value {
@@ -230,5 +244,53 @@ body {
   .pause-btn, .game-over-btn, .level-btn, .about-btn {
     padding: 14px 20px;
     font-size: 1rem;
+    min-height: 50px;
+    border-radius: 12px;
+  }
+  
+  .pause-buttons, .game-over-buttons, .level-passed-buttons, .about-buttons {
+    gap: 15px;
+  }
+  
+  .current-score, .final-score, .level-info {
+    padding: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .about-info {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Portrait optimizasyon */
+@media (max-width: 480px) and (orientation: portrait) {
+  .game-pause, .game-over, .level-passed, .about-page {
+    padding-top: 30px;
+  }
+}
+
+/* Landscape optimizasyon */
+@media (max-width: 736px) and (orientation: landscape) {
+  .game-pause, .game-over, .level-passed, .about-page {
+    padding: 20px 10px;
+    align-items: center;
+  }
+  
+  .pause-content, .game-over-content, .level-passed-content, .about-content {
+    padding: 15px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .pause-header h2, .game-over-header h2, .level-passed-header h2, .about-header h2 {
+    font-size: 1.4rem;
+  }
+  
+  .pause-btn, .game-over-btn, .level-btn, .about-btn {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    min-height: 44px;
   }
 }
