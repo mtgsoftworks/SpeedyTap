@@ -33,7 +33,7 @@ export class ComboService {
 
   private streakLevels: StreakLevel[] = [
     {
-      name: 'Başlangıç',
+      name: 'Beginner',
       icon: '⚪',
       multiplier: 1,
       minCombo: 0,
@@ -41,7 +41,7 @@ export class ComboService {
       particle: 'normal'
     },
     {
-      name: 'İyi',
+      name: 'Good',
       icon: '🟡',
       multiplier: 1.2,
       minCombo: 5,
@@ -49,7 +49,7 @@ export class ComboService {
       particle: 'good'
     },
     {
-      name: 'Harika',
+      name: 'Great',
       icon: '🟠',
       multiplier: 1.5,
       minCombo: 10,
@@ -57,7 +57,7 @@ export class ComboService {
       particle: 'great'
     },
     {
-      name: 'Mükemmel',
+      name: 'Perfect',
       icon: '🔴',
       multiplier: 2,
       minCombo: 20,
@@ -65,7 +65,7 @@ export class ComboService {
       particle: 'perfect'
     },
     {
-      name: 'Efsane',
+      name: 'Legendary',
       icon: '🟣',
       multiplier: 2.5,
       minCombo: 35,
@@ -73,7 +73,7 @@ export class ComboService {
       particle: 'legendary'
     },
     {
-      name: 'İmkansız',
+      name: 'Impossible',
       icon: '🌟',
       multiplier: 3,
       minCombo: 50,
@@ -81,7 +81,7 @@ export class ComboService {
       particle: 'impossible'
     },
     {
-      name: 'Tanrısal',
+      name: 'Godlike',
       icon: '✨',
       multiplier: 4,
       minCombo: 75,

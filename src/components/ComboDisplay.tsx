@@ -76,13 +76,13 @@ const ComboDisplay: React.FC<ComboDisplayProps> = ({
     if (!streakLevel) return '';
     
     const levelMap: { [key: string]: string } = {
-      'Başlangıç': 'streak-normal',
-      'İyi': 'streak-good',
-      'Harika': 'streak-great',
-      'Mükemmel': 'streak-perfect',
-      'Efsane': 'streak-legendary',
-      'İmkansız': 'streak-impossible',
-      'Tanrısal': 'streak-godlike'
+      'Beginner': 'streak-normal',
+      'Good': 'streak-good',
+      'Great': 'streak-great',
+      'Perfect': 'streak-perfect',
+      'Legendary': 'streak-legendary',
+      'Impossible': 'streak-impossible',
+      'Godlike': 'streak-godlike'
     };
     
     return levelMap[streakLevel.name] || 'streak-normal';

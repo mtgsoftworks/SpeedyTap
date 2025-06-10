@@ -2,7 +2,7 @@
   "name": "SpeedyTap - Mobile Touch Game",
   "short_name": "SpeedyTap",
   "description": "Fast-paced mobile touch game. Tap circles, score high!",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
