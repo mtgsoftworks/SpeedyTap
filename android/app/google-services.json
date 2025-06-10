@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "123456789012",
+    "project_id": "speedytap-mobile-default",
+    "storage_bucket": "speedytap-mobile-default.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123456789012:android:abc123def456789",
+        "android_client_info": {
+          "package_name": "com.mtgsoftworks.speedytap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDummyKeyForLocalTesting123456789"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        },
+        "admob_service": {
+          "admob_app_id": "ca-app-pub-2923372871861852~6427894520"
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123456789012:android:abc123def456790",
+        "android_client_info": {
+          "package_name": "com.mtgsoftworks.speedytap.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDummyKeyForLocalTestingDebug123456789"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        },
+        "admob_service": {
+          "admob_app_id": "ca-app-pub-2923372871861852~6427894520"
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+} 

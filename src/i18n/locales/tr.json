@@ -1,0 +1,104 @@
+{
+  "game": {
+    "title": "SpeedyTap",
+    "subtitle": "Hızlı Dokunma Oyunu",
+    "start": "Başla",
+    "pause": "Duraklat",
+    "resume": "Devam Et",
+    "restart": "Yeniden Başla",
+    "gameOver": "Oyun Bitti",
+    "score": "Puan",
+    "level": "Seviye",
+    "time": "Süre",
+    "taps": "Dokunma",
+    "accuracy": "İsabet",
+    "ready": "Hazır?",
+    "go": "Başla!",
+    "well_done": "Aferin!",
+    "try_again": "Tekrar Dene",
+    "perfect": "Mükemmel!",
+    "good_job": "İyi İş!",
+    "continue": "Devam",
+    "next_level": "Sonraki Seviye"
+  },
+  "menu": {
+    "play": "Oyna",
+    "settings": "Ayarlar",
+    "statistics": "İstatistikler",
+    "themes": "Temalar",
+    "achievements": "Başarılar",
+    "about": "Hakkında",
+    "exit": "Çıkış"
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "language": "Dil",
+    "sound": "Ses",
+    "music": "Müzik",
+    "vibration": "Titreşim",
+    "performance": "Performans",
+    "particles": "Parçacık Efektleri",
+    "animations": "Animasyonlar",
+    "difficulty": "Oyun Zorluğu",
+    "difficulty_easy": "Kolay",
+    "difficulty_normal": "Normal", 
+    "difficulty_hard": "Zor",
+    "back": "Geri",
+    "reset": "Sıfırla",
+    "turkish": "Türkçe",
+    "english": "English"
+  },
+  "statistics": {
+    "title": "İstatistikler",
+    "total_games": "Toplam Oyun",
+    "best_score": "En İyi Puan",
+    "total_taps": "Toplam Dokunma",
+    "accuracy_rate": "İsabet Oranı",
+    "time_played": "Oynama Süresi",
+    "levels_completed": "Tamamlanan Seviye",
+    "achievements_unlocked": "Açılan Başarı"
+  },
+  "achievements": {
+    "title": "Başarılar",
+    "locked": "Kilitli",
+    "unlocked": "Açık",
+    "first_game": "İlk Oyun",
+    "score_hunter": "Puan Avcısı",
+    "speed_demon": "Hız Şeytanı",
+    "accuracy_master": "İsabet Ustası",
+    "endurance_player": "Dayanıklılık Oyuncusu"
+  },
+  "themes": {
+    "title": "Temalar",
+    "default": "Varsayılan",
+    "dark": "Koyu",
+    "blue": "Mavi",
+    "green": "Yeşil",
+    "red": "Kırmızı",
+    "purple": "Mor",
+    "unlock_condition": "{{score}} puan ile aç"
+  },
+  "common": {
+    "on": "Açık",
+    "off": "Kapalı",
+    "yes": "Evet",
+    "no": "Hayır",
+    "ok": "Tamam",
+    "cancel": "İptal",
+    "save": "Kaydet",
+    "load": "Yükle",
+    "delete": "Sil",
+    "confirm": "Onayla"
+  },
+  "about": {
+    "description": "Modern mobil dokunma oyunu",
+    "instruction": "Hızla çıkan dairelere dokunarak yüksek skor yapmaya çalışın!",
+    "developer": "Geliştirici",
+    "version": "Versiyon"
+  },
+  "errors": {
+    "game_load_failed": "Oyun yüklenemedi",
+    "save_failed": "Kaydetme başarısız",
+    "load_failed": "Yükleme başarısız"
+  }
+} 

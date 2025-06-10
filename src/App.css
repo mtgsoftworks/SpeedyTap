@@ -1,0 +1,234 @@
+/* Phase 1 - CSS Değişkenleri */
+:root {
+  --ui-scale: 1;
+  --circle-size: 80px;
+  --font-size: 16px;
+  --safe-area-top: 0px;
+  --safe-area-bottom: 0px;
+  --safe-area-inset-top: env(safe-area-inset-top);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+  --safe-area-inset-left: env(safe-area-inset-left);
+  --safe-area-inset-right: env(safe-area-inset-right);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  margin: 0;
+  background: #0b1d31;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  /* Phase 1 - Safe area desteği */
+  padding-top: var(--safe-area-inset-top);
+  padding-bottom: var(--safe-area-inset-bottom);
+  padding-left: var(--safe-area-inset-left);
+  padding-right: var(--safe-area-inset-right);
+}
+
+/* Pause, GameOver, LevelPassed, About sayfaları için paylaşımlı stiller */
+.game-pause, .game-over, .level-passed, .about-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #0b1d31 0%, #1a2f4a 70%, #2d3748 100%);
+  color: white;
+  padding: 20px;
+}
+
+.pause-content, .game-over-content, .level-passed-content, .about-content {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  animation: slideInUp 0.6s ease-out;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.pause-header, .game-over-header, .level-passed-header, .about-header {
+  margin-bottom: 30px;
+}
+
+.pause-header h2, .game-over-header h2, .level-passed-header h2, .about-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #4fd1c7, #38b2ac);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.current-score, .final-score, .level-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.score-label, .level-label {
+  font-size: 0.9rem;
+  color: #a0aec0;
+  font-weight: 500;
+}
+
+.score-value {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #4fd1c7;
+}
+
+.new-record-text, .next-level-text {
+  color: #ffd700;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.pause-buttons, .game-over-buttons, .level-passed-buttons, .about-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pause-btn, .game-over-btn, .level-btn, .about-btn {
+  padding: 16px 24px;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pause-btn span, .game-over-btn span, .level-btn span, .about-btn span {
+  position: relative;
+  z-index: 2;
+}
+
+.pause-btn::before, .game-over-btn::before, .level-btn::before, .about-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.pause-btn:hover::before, .game-over-btn:hover::before, 
+.level-btn:hover::before, .about-btn:hover::before {
+  left: 100%;
+}
+
+.pause-btn.primary, .game-over-btn.primary, .level-btn.primary, .about-btn.primary {
+  background: linear-gradient(45deg, #4fd1c7, #38b2ac);
+  color: white;
+  box-shadow: 0 8px 25px rgba(79, 209, 199, 0.3);
+}
+
+.pause-btn.primary:hover, .game-over-btn.primary:hover, 
+.level-btn.primary:hover, .about-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(79, 209, 199, 0.4);
+}
+
+.pause-btn.secondary, .game-over-btn.secondary, .level-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.pause-btn.secondary:hover, .game-over-btn.secondary:hover, .level-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.pause-btn.tertiary {
+  background: rgba(252, 129, 129, 0.2);
+  color: #fc8181;
+  border: 2px solid rgba(252, 129, 129, 0.3);
+}
+
+.pause-btn.tertiary:hover {
+  background: rgba(252, 129, 129, 0.3);
+  border-color: rgba(252, 129, 129, 0.5);
+  transform: translateY(-2px);
+}
+
+.about-info {
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.about-info p {
+  margin-bottom: 8px;
+  color: #e2e8f0;
+  line-height: 1.5;
+}
+
+.about-info strong {
+  color: #4fd1c7;
+}
+
+/* CSS dosyası sonuna GamePause stilleri */
+.pause-content {
+  /* GamePause'e özel stiller varsa buraya */
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+  .pause-content, .game-over-content, .level-passed-content, .about-content {
+    margin: 0 10px;
+    padding: 20px;
+  }
+  
+  .pause-header h2, .game-over-header h2, .level-passed-header h2, .about-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .score-value {
+    font-size: 1.8rem;
+  }
+  
+  .pause-btn, .game-over-btn, .level-btn, .about-btn {
+    padding: 14px 20px;
+    font-size: 1rem;
+  }
+}

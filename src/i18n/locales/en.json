@@ -1,0 +1,104 @@
+{
+  "game": {
+    "title": "SpeedyTap",
+    "subtitle": "Fast Tapping Game",
+    "start": "Start",
+    "pause": "Pause",
+    "resume": "Resume",
+    "restart": "Restart",
+    "gameOver": "Game Over",
+    "score": "Score",
+    "level": "Level",
+    "time": "Time",
+    "taps": "Taps",
+    "accuracy": "Accuracy",
+    "ready": "Ready?",
+    "go": "Go!",
+    "well_done": "Well Done!",
+    "try_again": "Try Again",
+    "perfect": "Perfect!",
+    "good_job": "Good Job!",
+    "continue": "Continue",
+    "next_level": "Next Level"
+  },
+  "menu": {
+    "play": "Play",
+    "settings": "Settings",
+    "statistics": "Statistics",
+    "themes": "Themes",
+    "achievements": "Achievements",
+    "about": "About",
+    "exit": "Exit"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "sound": "Sound",
+    "music": "Music",
+    "vibration": "Vibration",
+    "performance": "Performance",
+    "particles": "Particle Effects",
+    "animations": "Animations",
+    "difficulty": "Game Difficulty",
+    "difficulty_easy": "Easy",
+    "difficulty_normal": "Normal",
+    "difficulty_hard": "Hard",
+    "back": "Back",
+    "reset": "Reset",
+    "turkish": "Türkçe",
+    "english": "English"
+  },
+  "statistics": {
+    "title": "Statistics",
+    "total_games": "Total Games",
+    "best_score": "Best Score",
+    "total_taps": "Total Taps",
+    "accuracy_rate": "Accuracy Rate",
+    "time_played": "Time Played",
+    "levels_completed": "Levels Completed",
+    "achievements_unlocked": "Achievements Unlocked"
+  },
+  "achievements": {
+    "title": "Achievements",
+    "locked": "Locked",
+    "unlocked": "Unlocked",
+    "first_game": "First Game",
+    "score_hunter": "Score Hunter",
+    "speed_demon": "Speed Demon",
+    "accuracy_master": "Accuracy Master",
+    "endurance_player": "Endurance Player"
+  },
+  "themes": {
+    "title": "Themes",
+    "default": "Default",
+    "dark": "Dark",
+    "blue": "Blue",
+    "green": "Green",
+    "red": "Red",
+    "purple": "Purple",
+    "unlock_condition": "Unlock with {{score}} points"
+  },
+  "common": {
+    "on": "On",
+    "off": "Off",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "save": "Save",
+    "load": "Load",
+    "delete": "Delete",
+    "confirm": "Confirm"
+  },
+  "about": {
+    "description": "Modern mobile tapping game",
+    "instruction": "Tap the circles that appear quickly to achieve a high score!",
+    "developer": "Developer",
+    "version": "Version"
+  },
+  "errors": {
+    "game_load_failed": "Failed to load game",
+    "save_failed": "Save failed",
+    "load_failed": "Load failed"
+  }
+} 

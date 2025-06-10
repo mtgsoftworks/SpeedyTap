@@ -1,0 +1,154 @@
+.performance-monitor {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px;
+  z-index: 9999;
+  font-family: 'Arial', monospace;
+  font-size: 11px;
+  color: white;
+  backdrop-filter: blur(10px);
+  min-width: 120px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.performance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.performance-title {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.performance-status {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.performance-status.excellent {
+  background: rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+  border: 1px solid #22c55e;
+}
+
+.performance-status.good {
+  background: rgba(251, 191, 36, 0.3);
+  color: #fbbf24;
+  border: 1px solid #fbbf24;
+}
+
+.performance-status.fair {
+  background: rgba(251, 146, 60, 0.3);
+  color: #fb923c;
+  border: 1px solid #fb923c;
+}
+
+.performance-status.poor {
+  background: rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  border: 1px solid #ef4444;
+}
+
+.performance-metrics {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3px;
+}
+
+.metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 0;
+}
+
+.metric-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 10px;
+}
+
+.metric-value {
+  font-weight: bold;
+  font-size: 11px;
+  color: white;
+}
+
+.metric-value.fps-excellent {
+  color: #22c55e;
+}
+
+.metric-value.fps-good {
+  color: #fbbf24;
+}
+
+.metric-value.fps-fair {
+  color: #fb923c;
+}
+
+.metric-value.fps-poor {
+  color: #ef4444;
+}
+
+.metric-value.warning {
+  color: #ef4444;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Mobil optimizasyon */
+@media (max-width: 768px) {
+  .performance-monitor {
+    top: 5px;
+    right: 5px;
+    padding: 6px;
+    font-size: 10px;
+    min-width: 100px;
+  }
+  
+  .performance-title {
+    font-size: 11px;
+  }
+  
+  .metric-value {
+    font-size: 10px;
+  }
+}
+
+/* Yatay ekran optimizasyonu */
+@media (orientation: landscape) and (max-height: 500px) {
+  .performance-monitor {
+    top: 5px;
+    right: 5px;
+    padding: 4px 6px;
+    font-size: 9px;
+    min-width: 90px;
+  }
+  
+  .performance-metrics {
+    gap: 2px;
+  }
+  
+  .metric {
+    padding: 1px 0;
+  }
+} 
