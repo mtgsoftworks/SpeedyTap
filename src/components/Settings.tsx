@@ -148,7 +148,7 @@ const Settings = ({ onBack }: SettingsProps) => {
                 </div>
 
                 <div className="setting-item">
-                  <label>Ses Seviyesi</label>
+                  <label>{t('settings.volume_level')}</label>
                   <div className="volume-control">
                     <input
                       type="range"

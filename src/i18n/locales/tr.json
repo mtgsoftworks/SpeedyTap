@@ -57,7 +57,8 @@
     "turkish": "Türkçe",
     "english": "English",
     "save_error": "Ayarlar kaydedilemedi!",
-    "unsaved_changes": "Kaydedilmemiş değişiklikler var. Çıkmak istediğinizden emin misiniz?"
+    "unsaved_changes": "Kaydedilmemiş değişiklikler var. Çıkmak istediğinizden emin misiniz?",
+    "volume_level": "Ses Seviyesi"
   },
   "statistics": {
     "title": "İstatistikler",
