@@ -60,7 +60,7 @@ const Settings = ({ onBack }: SettingsProps) => {
         const parsed = JSON.parse(savedSettings);
         setSettings({ ...defaultSettings, ...parsed });
       } catch (error) {
-        console.error('Ayarlar yüklenemedi:', error);
+        console.error('Settings could not be loaded:', error);
       }
     }
   }, []);
@@ -75,8 +75,8 @@ const Settings = ({ onBack }: SettingsProps) => {
       await audioService.playClick();
       alert(t('common.save') + ' ' + t('common.ok') + '!');
     } catch (error) {
-      console.error('Ayarlar kaydedilemedi:', error);
-      alert('Ayarlar kaydedilemedi!');
+      console.error('Settings could not be saved:', error);
+      alert(t('settings.save_error'));
     }
   };
 
@@ -97,7 +97,7 @@ const Settings = ({ onBack }: SettingsProps) => {
 
   const handleBack = async () => {
     if (hasChanges) {
-      if (confirm('Kaydedilmemiş değişiklikler var. Çıkmak istediğinizden emin misiniz?')) {
+      if (confirm(t('settings.unsaved_changes'))) {
         await audioService.playClick();
         onBack();
       }

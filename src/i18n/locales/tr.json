@@ -7,6 +7,14 @@
     "resume": "Devam Et",
     "restart": "Yeniden Başla",
     "gameOver": "Oyun Bitti",
+    "game_over": "Oyun Bitti",
+    "paused": "Oyun Duraklatıldı",
+    "current_score": "Mevcut Skor",
+    "final_score": "Final Skor",
+    "new_record": "Yeni Rekor!",
+    "congratulations": "Tebrikler! Yeni rekor kırdınız!",
+    "level_completed": "Seviye Tamamlandı!",
+    "next_level_harder": "Sonraki seviye daha zor olacak!",
     "score": "Puan",
     "level": "Seviye",
     "time": "Süre",
@@ -28,7 +36,8 @@
     "themes": "Temalar",
     "achievements": "Başarılar",
     "about": "Hakkında",
-    "exit": "Çıkış"
+    "exit": "Çıkış",
+    "main_menu": "Ana Menü"
   },
   "settings": {
     "title": "Ayarlar",
@@ -46,7 +55,9 @@
     "back": "Geri",
     "reset": "Sıfırla",
     "turkish": "Türkçe",
-    "english": "English"
+    "english": "English",
+    "save_error": "Ayarlar kaydedilemedi!",
+    "unsaved_changes": "Kaydedilmemiş değişiklikler var. Çıkmak istediğinizden emin misiniz?"
   },
   "statistics": {
     "title": "İstatistikler",

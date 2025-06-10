@@ -177,7 +177,7 @@ const GameArea = ({
 
   // Oyunu başlat
   const startGame = useCallback(() => {
-    console.log('Oyun başlatılıyor...');
+    console.log('Starting game...');
     setGameRunning(true);
     
     // Önceki timer'ı temizle

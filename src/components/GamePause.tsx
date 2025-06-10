@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import './GamePause.css';
 
 interface GamePauseProps {
@@ -8,26 +9,28 @@ interface GamePauseProps {
 }
 
 const GamePause = ({ score, onResume, onRestart, onMenu }: GamePauseProps) => {
+  const { t } = useTranslation();
+  
   return (
     <div className="game-pause">
       <div className="pause-content">
         <div className="pause-header">
-          <h2>Oyun Duraklatıldı</h2>
+          <h2>{t('game.paused')}</h2>
           <div className="current-score">
-            <span className="score-label">Mevcut Skor</span>
+            <span className="score-label">{t('game.current_score')}</span>
             <span className="score-value">{score.toLocaleString()}</span>
           </div>
         </div>
 
         <div className="pause-buttons">
           <button className="pause-btn primary" onClick={onResume}>
-            <span>Devam Et</span>
+            <span>{t('game.resume')}</span>
           </button>
           <button className="pause-btn secondary" onClick={onRestart}>
-            <span>Yeniden Başla</span>
+            <span>{t('game.restart')}</span>
           </button>
           <button className="pause-btn tertiary" onClick={onMenu}>
-            <span>Ana Menü</span>
+            <span>{t('menu.main_menu')}</span>
           </button>
         </div>
       </div>

@@ -67,8 +67,8 @@ export class ThemeService {
     const themes: Theme[] = [
       {
         id: 'default',
-        name: 'Klasik Mavi',
-        description: 'Orijinal SpeedyTap teması',
+        name: 'Classic Blue',
+        description: 'Original SpeedyTap theme',
         icon: '🔵',
         isUnlocked: true,
         colors: {
@@ -132,11 +132,11 @@ export class ThemeService {
       },
       {
         id: 'sunset',
-        name: 'Gün Batımı',
-        description: 'Sıcak turuncu ve pembe tonlar',
+        name: 'Sunset',
+        description: 'Warm orange and pink tones',
         icon: '🌅',
         isUnlocked: false,
-        unlockCondition: '1000 puan yap',
+        unlockCondition: 'Score 1000 points',
         colors: {
           primary: '#ff6b35',
           secondary: '#f7931e',
@@ -165,11 +165,11 @@ export class ThemeService {
       },
       {
         id: 'ocean',
-        name: 'Okyanus Derinliği',
-        description: 'Derin mavi ve deniz tonları',
+        name: 'Ocean Depth',
+        description: 'Deep blue and sea tones',
         icon: '🌊',
         isUnlocked: false,
-        unlockCondition: '25 combo yap',
+        unlockCondition: 'Make 25 combo',
         colors: {
           primary: '#0077be',
           secondary: '#00a8cc',
@@ -231,11 +231,11 @@ export class ThemeService {
       },
       {
         id: 'space',
-        name: 'Uzay Macerası',
-        description: 'Galaktik mor ve mavi tonlar',
+        name: 'Space Adventure',
+        description: 'Galactic purple and blue tones',
         icon: '🚀',
         isUnlocked: false,
-        unlockCondition: '5000 puan yap',
+        unlockCondition: 'Score 5000 points',
         colors: {
           primary: '#6a0dad',
           secondary: '#9370db',

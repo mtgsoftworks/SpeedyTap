@@ -7,6 +7,14 @@
     "resume": "Resume",
     "restart": "Restart",
     "gameOver": "Game Over",
+    "game_over": "Game Over",
+    "paused": "Game Paused",
+    "current_score": "Current Score",
+    "final_score": "Final Score",
+    "new_record": "New Record!",
+    "congratulations": "Congratulations! You broke a new record!",
+    "level_completed": "Level Completed!",
+    "next_level_harder": "Next level will be harder!",
     "score": "Score",
     "level": "Level",
     "time": "Time",
@@ -28,7 +36,8 @@
     "themes": "Themes",
     "achievements": "Achievements",
     "about": "About",
-    "exit": "Exit"
+    "exit": "Exit",
+    "main_menu": "Main Menu"
   },
   "settings": {
     "title": "Settings",
@@ -46,7 +55,9 @@
     "back": "Back",
     "reset": "Reset",
     "turkish": "Türkçe",
-    "english": "English"
+    "english": "English",
+    "save_error": "Settings could not be saved!",
+    "unsaved_changes": "There are unsaved changes. Are you sure you want to exit?"
   },
   "statistics": {
     "title": "Statistics",

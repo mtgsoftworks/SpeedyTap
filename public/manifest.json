@@ -1,7 +1,7 @@
 {
-  "name": "SpeedyTap - Mobile Dokunma Oyunu",
+  "name": "SpeedyTap - Mobile Touch Game",
   "short_name": "SpeedyTap",
-  "description": "Hızlı dokunma tabanlı mobil oyun. Dairelere dokun, yüksek skor yap!",
+  "description": "Fast-paced mobile touch game. Tap circles, score high!",
   "version": "1.3.0",
   "start_url": "/",
   "display": "standalone",
@@ -23,7 +23,7 @@
     }
   ],
   "categories": ["games", "entertainment"],
-  "lang": "tr",
+  "lang": "en",
   "scope": "/",
   "screenshots": [
     {

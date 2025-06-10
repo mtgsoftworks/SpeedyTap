@@ -18,7 +18,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'tr', // Varsayılan dil Türkçe
+    lng: 'en', // Varsayılan dil İngilizce
     fallbackLng: 'en',
     debug: false,
     
