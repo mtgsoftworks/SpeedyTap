@@ -123,7 +123,7 @@ const ComboDisplay: React.FC<ComboDisplayProps> = ({
       </div>
 
       {/* Streak level gösterimi */}
-      {streakLevel && streakLevel.name !== 'Başlangıç' && (
+      {streakLevel && streakLevel.name !== 'Beginner' && (
         <div className="combo-streak">
           <div className="streak-icon">
             {streakLevel.icon}
@@ -141,7 +141,7 @@ const ComboDisplay: React.FC<ComboDisplayProps> = ({
             {comboMultiplier.toFixed(1)}x
           </span>
           <span className="multiplier-label">
-            Çarpan
+            Multiplier
           </span>
         </div>
       )}

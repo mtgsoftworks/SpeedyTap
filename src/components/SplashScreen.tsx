@@ -8,7 +8,7 @@ const SplashScreen = () => {
           <div className="pulse-circle"></div>
         </div>
         <h1 className="splash-title">SpeedyTap</h1>
-        <p className="splash-subtitle">Her Dokunuş Önemli</p>
+        <p className="splash-subtitle">Every Touch Matters</p>
         <div className="loading-dots">
           <span></span>
           <span></span>

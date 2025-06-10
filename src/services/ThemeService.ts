@@ -99,11 +99,11 @@ export class ThemeService {
       },
       {
         id: 'neon',
-        name: 'Neon Gece',
-        description: 'Cyberpunk tarzı neon teması',
+        name: 'Neon Night',
+        description: 'Cyberpunk style neon theme',
         icon: '🌃',
         isUnlocked: false,
-        unlockCondition: 'Level 5\'e ulaş',
+        unlockCondition: 'Reach Level 5',
         colors: {
           primary: '#ff00ff',
           secondary: '#00ffff',
@@ -265,10 +265,10 @@ export class ThemeService {
       {
         id: 'minimal',
         name: 'Minimalist',
-        description: 'Sade beyaz ve gri tonlar',
+        description: 'Clean white and gray tones',
         icon: '⚪',
         isUnlocked: false,
-        unlockCondition: '50 combo yap',
+        unlockCondition: 'Make 50 combo',
         colors: {
           primary: '#333333',
           secondary: '#666666',

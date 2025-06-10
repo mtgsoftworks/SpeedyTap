@@ -51,8 +51,8 @@ function App() {
     highScore: parseInt(localStorage.getItem('speedytap_highscore') || '0'),
     currentTaps: 0,
     requiredTaps: 10,
-    timeLeft: 10000,
-    maxTime: 10000
+    timeLeft: 30000, // 30 saniye başlangıç
+    maxTime: 30000
   });
 
   // Phase 1 - Sistem servisleri
@@ -90,8 +90,8 @@ function App() {
       highScore: gameData.highScore,
       currentTaps: 0,
       requiredTaps: 10,
-      timeLeft: 10000,
-      maxTime: 10000
+      timeLeft: 30000, // 30 saniye başlangıç
+      maxTime: 30000
     });
     changeGameState('playing');
   };
@@ -210,10 +210,10 @@ function App() {
               setGameData(prev => ({
                 ...prev,
                 level: prev.level + 1,
-                requiredTaps: prev.requiredTaps + 5,
+                requiredTaps: prev.requiredTaps + 3, // Her seviyede +3 tıklama
                 currentTaps: 0,
-                timeLeft: Math.max(5000, prev.maxTime - 500), // Her seviyede biraz daha zor
-                maxTime: Math.max(5000, prev.maxTime - 500)
+                timeLeft: Math.max(15000, prev.maxTime - 1000), // En az 15 saniye, her seviyede -1 saniye
+                maxTime: Math.max(15000, prev.maxTime - 1000)
               }));
               changeGameState('playing');
             }}
