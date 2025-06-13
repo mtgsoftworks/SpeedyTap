@@ -5,6 +5,7 @@ import type { ShopCategory } from '../services/ShopService';
 
 import { ImpactStyle } from '@capacitor/haptics';
 import './ShopCategory.css';
+import { useTranslation } from 'react-i18next';
 
 interface ShopCategoryProps {
   category: ShopCategory;
@@ -195,6 +196,7 @@ const ShopCategoryComponent = ({
   const [sortBy, setSortBy] = useState<'price' | 'rarity' | 'level'>('price');
   
   const shopService = ShopService.getInstance();
+  const { t } = useTranslation();
 
   useEffect(() => {
     loadItems();
@@ -242,23 +244,23 @@ const ShopCategoryComponent = ({
 
   const getCategoryTitle = (cat: ShopCategory): string => {
     switch (cat) {
-      case 'powerups': return '⚡ Güçlendiriciler';
-      case 'themes': return '🎨 Temalar';
-      case 'boosts': return '🚀 Destekler';
-      case 'cosmetics': return '✨ Kozmetikler';
-      case 'bundles': return '📦 Paketler';
-      default: return '🛍️ Ürünler';
+      case 'powerups': return `⚡ ${t('shop.powerups')}`;
+      case 'themes': return `🎨 ${t('shop.themes')}`;
+      case 'boosts': return `🚀 ${t('shop.boosts')}`;
+      case 'cosmetics': return `✨ ${t('shop.cosmetics')}`;
+      case 'bundles': return `📦 ${t('shop.bundles')}`;
+      default: return `🛍️ ${t('shop.products')}`;
     }
   };
 
   const getCategoryDescription = (cat: ShopCategory): string => {
     switch (cat) {
-      case 'powerups': return 'Oyun içinde kullanabileceğin güçlü yetenekler';
-      case 'themes': return 'Oyunun görünümünü değiştiren temalar';
-      case 'boosts': return 'Oyun performansını artıran destekler';
-      case 'cosmetics': return 'Görsel efektler ve ses paketleri';
-      case 'bundles': return 'Uygun fiyatlı ürün paketleri';
-      default: return 'Mağaza ürünleri';
+      case 'powerups': return t('shop.powerups_desc');
+      case 'themes': return t('shop.themes_desc');
+      case 'boosts': return t('shop.boosts_desc');
+      case 'cosmetics': return t('shop.cosmetics_desc');
+      case 'bundles': return t('shop.bundles_desc');
+      default: return t('shop.products_desc');
     }
   };
 

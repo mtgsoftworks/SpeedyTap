@@ -79,25 +79,25 @@ const GameMenu = ({
 
         <div className="menu-buttons">
           <button className="menu-btn primary" onClick={handleNewGame}>
-            <span>🎯 Hızlı Başlat</span>
+            <span>🎯 {t('menu.quick_start')}</span>
           </button>
           
           <div className="menu-grid">
             <button className="menu-btn secondary grid-btn" onClick={handleModeSelector}>
               <span className="btn-icon">🎮</span>
-              <span className="btn-text">Oyun Modları</span>
+              <span className="btn-text">{t('menu.game_modes')}</span>
             </button>
             <button className="menu-btn secondary grid-btn" onClick={handleDailyChallenges}>
               <span className="btn-icon">📅</span>
-              <span className="btn-text">Günlük Görevler</span>
+              <span className="btn-text">{t('menu.daily_challenges')}</span>
             </button>
             <button className="menu-btn secondary grid-btn shop-btn" onClick={handleShop}>
               <span className="btn-icon">🏪</span>
-              <span className="btn-text">Mağaza</span>
+              <span className="btn-text">{t('menu.shop')}</span>
             </button>
             <button className="menu-btn secondary grid-btn" onClick={handleStatistics}>
               <span className="btn-icon">📊</span>
-              <span className="btn-text">İstatistikler</span>
+              <span className="btn-text">{t('menu.statistics')}</span>
             </button>
             <button className="menu-btn secondary grid-btn" onClick={handleSettings}>
               <span className="btn-icon">⚙️</span>
@@ -113,7 +113,7 @@ const GameMenu = ({
         <div className="menu-footer">
           <p>{t('game.subtitle')}</p>
           <div className="copyright">
-            <p>2025 © MTG Softworks · SpeedyTap™ Game · All Rights Reserved</p>
+            <p>{t('common.copyright')}</p>
           </div>
         </div>
       </div>

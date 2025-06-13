@@ -22,7 +22,7 @@ const About = ({ onBack }: AboutProps) => {
           <p>{t('about.version')}: 2.0.0</p>
           <br />
           <div className="copyright">
-            <p>2025 © MTG Softworks · SpeedyTap™ Game · All Rights Reserved</p>
+            <p>{t('common.copyright')}</p>
           </div>
         </div>
         <div className="about-buttons">
