@@ -4,9 +4,6 @@ import { adMobService } from './services/AdMobService';
 import { audioService } from './services/AudioService';
 import { BatteryOptimizer } from './services/BatteryOptimizer';
 import { ScreenAdapter } from './services/ScreenAdapter';
-import { PerformanceMonitor } from './components/PerformanceMonitor';
-import TouchController from './components/TouchController';
-import Settings from './components/Settings';
 import './i18n'; // i18n sistemini başlat
 import './App.css';
 
@@ -18,16 +15,28 @@ import GamePause from './components/GamePause';
 import GameOver from './components/GameOver';
 import LevelPassed from './components/LevelPassed';
 import About from './components/About';
+import Settings from './components/Settings';
+import TouchController from './components/TouchController';
+import GameModeSelector, { type GameMode } from './components/GameModeSelector';
+import AchievementNotification from './components/AchievementNotification';
+import Statistics from './components/Statistics';
+import DailyChallenges from './components/DailyChallenges';
+import Shop from './components/Shop';
+import type { Achievement } from './services/StatisticsService';
 
 export type GameState = 
   | 'splash'
   | 'menu'
+  | 'mode_selector'
   | 'playing'
   | 'paused'
   | 'game_over'
   | 'level_passed'
   | 'about'
-  | 'settings';
+  | 'settings'
+  | 'statistics'
+  | 'daily_challenges'
+  | 'shop';
 
 export interface GameData {
   score: number;
@@ -37,12 +46,12 @@ export interface GameData {
   requiredTaps: number;
   timeLeft: number;
   maxTime: number;
+  gameMode: 'classic' | 'target' | 'survival' | 'speed';
+  targetCircles?: number; // Target mode için
+  targetsHit?: number; // Target mode için
 }
 
 function App() {
-  // Phase 1 - Performans monitörü görünürlüğü - false olarak ayarlayalım
-  const showPerformance = false;
-
   // Oyun durumu
   const [gameState, setGameState] = useState<GameState>('splash');
   const [gameData, setGameData] = useState<GameData>({
@@ -51,14 +60,25 @@ function App() {
     highScore: parseInt(localStorage.getItem('speedytap_highscore') || '0'),
     currentTaps: 0,
     requiredTaps: 10,
-    timeLeft: 30000, // 30 saniye başlangıç
-    maxTime: 30000
+    timeLeft: 30000,
+    maxTime: 30000,
+    gameMode: 'classic'
+  });
+  const [winStreak, setWinStreak] = useState(0); // Kazanç streak tracking
+  
+  // Achievement notification state
+  const [achievementNotification, setAchievementNotification] = useState<{
+    achievement: Achievement | null;
+    isVisible: boolean;
+  }>({
+    achievement: null,
+    isVisible: false
   });
 
   // Phase 1 - Sistem servisleri
   const batteryOptimizer = BatteryOptimizer.getInstance();
   const screenAdapter = ScreenAdapter.getInstance();
-
+  
   // Haptic feedback fonksiyonu
   const triggerHaptic = async (style: ImpactStyle = ImpactStyle.Medium) => {
     try {
@@ -83,7 +103,7 @@ function App() {
   };
 
   // Yeni oyun başlatma
-  const startNewGame = () => {
+  const startNewGame = (gameMode: GameMode = 'classic') => {
     setGameData({
       score: 0,
       level: 1,
@@ -91,9 +111,25 @@ function App() {
       currentTaps: 0,
       requiredTaps: 10,
       timeLeft: 30000, // 30 saniye başlangıç
-      maxTime: 30000
+      maxTime: 30000,
+      gameMode
     });
     changeGameState('playing');
+  };
+
+  // Achievement notification fonksiyonları
+  const showAchievementNotification = (achievement: Achievement) => {
+    setAchievementNotification({
+      achievement,
+      isVisible: true
+    });
+  };
+
+  const hideAchievementNotification = () => {
+    setAchievementNotification({
+      achievement: null,
+      isVisible: false
+    });
   };
 
   // App başlatma ve servisler initialize
@@ -140,14 +176,25 @@ function App() {
           await adMobService.showMenuBanner();
           break;
         case 'game_over':
-          // Oyun sonu interstitial göster
+          // Oyun kaybında her zaman interstitial göster
           await adMobService.showGameEndAd();
+          // Win streak sıfırla
+          console.log(`Game over, resetting win streak from ${winStreak} to 0`);
+          setWinStreak(0);
           break;
         case 'level_passed':
-          // Level geçişinde %50 şans ile interstitial
-          if (Math.random() > 0.5) {
-            await adMobService.showInterstitialAd();
-          }
+          // Level geçişinde win streak artır
+          setWinStreak(prev => {
+            const newStreak = prev + 1;
+            console.log(`Win streak: ${newStreak}`);
+            // 4 level üst üste kazanınca reklam göster
+            if (newStreak >= 4) {
+              console.log('4 win streak reached, showing ad');
+              adMobService.showInterstitialAd();
+              return 0; // Streak'i sıfırla
+            }
+            return newStreak;
+          });
           break;
       }
     };
@@ -164,6 +211,10 @@ function App() {
           <GameMenu
             highScore={gameData.highScore}
             onNewGame={startNewGame}
+            onModeSelector={() => changeGameState('mode_selector')}
+            onStatistics={() => changeGameState('statistics')}
+            onDailyChallenges={() => changeGameState('daily_challenges')}
+            onShop={() => changeGameState('shop')}
             onAbout={() => changeGameState('about')}
             onSettings={() => changeGameState('settings')}
           />
@@ -180,6 +231,7 @@ function App() {
             }}
             onLevelPassed={() => changeGameState('level_passed')}
             triggerHaptic={triggerHaptic}
+            showAchievementNotification={showAchievementNotification}
           />
         );
       case 'paused':
@@ -207,14 +259,19 @@ function App() {
             level={gameData.level}
             onContinue={() => {
               // Seviye arttır ve oyuna devam et
-              setGameData(prev => ({
-                ...prev,
-                level: prev.level + 1,
-                requiredTaps: prev.requiredTaps + 3, // Her seviyede +3 tıklama
-                currentTaps: 0,
-                timeLeft: Math.max(15000, prev.maxTime - 1000), // En az 15 saniye, her seviyede -1 saniye
-                maxTime: Math.max(15000, prev.maxTime - 1000)
-              }));
+              setGameData(prev => {
+                const newLevel = Math.min(prev.level + 1, 50); // Maksimum 50 level
+                
+                return {
+                  ...prev,
+                  level: newLevel,
+                  requiredTaps: Math.min(prev.requiredTaps + 2, 30), // Maksimum 30 tap, daha az artış
+                  currentTaps: 0,
+                  timeLeft: Math.max(12000, 30000 - (newLevel * 500)), // Minimum 12s, her level -0.5s
+                  maxTime: Math.max(12000, 30000 - (newLevel * 500)),
+                  gameMode: 'classic'
+                };
+              });
               changeGameState('playing');
             }}
             onMenu={() => changeGameState('menu')}
@@ -232,8 +289,56 @@ function App() {
             onBack={() => changeGameState('menu')}
           />
         );
+      case 'mode_selector':
+        return (
+          <GameModeSelector
+            onSelectMode={(mode) => startNewGame(mode)}
+            onBack={() => changeGameState('menu')}
+          />
+        );
+      case 'statistics':
+        return (
+          <Statistics
+            onBack={() => changeGameState('menu')}
+          />
+        );
+      case 'daily_challenges':
+        return (
+          <DailyChallenges
+            onBack={() => changeGameState('menu')}
+            onStartChallenge={(challenge) => {
+              // Daily challenge için özel oyun moduna geç
+              setGameData(prev => ({
+                ...prev,
+                gameMode: challenge.type === 'speed' ? 'speed' : 
+                         challenge.type === 'accuracy' ? 'target' : 
+                         challenge.type === 'survival' ? 'survival' : 'classic',
+                targetCircles: challenge.type === 'accuracy' ? challenge.target : undefined
+              }));
+              startNewGame();
+            }}
+          />
+        );
+      case 'shop':
+        return (
+          <Shop
+            onBack={() => changeGameState('menu')}
+            triggerHaptic={triggerHaptic}
+          />
+        );
       default:
-        return <GameMenu highScore={gameData.highScore} onNewGame={startNewGame} onAbout={() => changeGameState('about')} onSettings={() => changeGameState('settings')} />;
+        return (
+          <GameMenu
+            highScore={gameData.highScore}
+            onNewGame={startNewGame}
+            onModeSelector={() => changeGameState('mode_selector')}
+            onStatistics={() => changeGameState('statistics')}
+            onDailyChallenges={() => changeGameState('daily_challenges')}
+            onShop={() => changeGameState('shop')}
+            onAbout={() => changeGameState('about')}
+            onSettings={() => changeGameState('settings')}
+          />
+        );
     }
   };
 
@@ -245,8 +350,12 @@ function App() {
       {/* Ana oyun ekranı */}
       {renderCurrentScreen()}
       
-      {/* Phase 1 - Performans Monitörü */}
-      <PerformanceMonitor isVisible={showPerformance} />
+      {/* Achievement notification */}
+      <AchievementNotification
+        achievement={achievementNotification.achievement}
+        isVisible={achievementNotification.isVisible}
+        onClose={hideAchievementNotification}
+      />
     </div>
   );
 }

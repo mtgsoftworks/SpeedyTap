@@ -318,7 +318,7 @@ export class ThemeService {
           success: '#27ae60',
           warning: '#f39c12',
           error: '#e74c3c',
-          particle: ['#ff0000', '#ff8000', '#ffff00', '#00ff00', '#0080ff', '#8000ff']
+          particle: ['#00ff00', '#0080ff', '#8000ff', '#ffff00', '#ff8000', '#00ffff', '#8fbc8f', '#4169e1']
         },
         effects: {
           particleIntensity: 2,
@@ -487,7 +487,8 @@ export class ThemeService {
       return this.currentTheme.colors.circle;
     }
     
-    const colors = ['#ff0000', '#ff8000', '#ffff00', '#00ff00', '#0080ff', '#8000ff'];
+    // Kırmızı ve kırmızıya yakın renklerden kaçınan palette
+    const colors = ['#00ff00', '#0080ff', '#8000ff', '#ffff00', '#ff8000', '#00ffff', '#8fbc8f', '#4169e1'];
     return colors[index % colors.length];
   }
 

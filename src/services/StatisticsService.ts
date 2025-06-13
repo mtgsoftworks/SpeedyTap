@@ -112,11 +112,23 @@ export interface GameSession {
   theme: string;
 }
 
+export interface Achievement {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  unlocked: boolean;
+  progress: number;
+  maxProgress: number;
+  reward?: string;
+}
+
 export class StatisticsService {
   private static instance: StatisticsService;
-  private stats!: GameStatistics;
-  private currentSession: SessionStats | null = null;
+  private stats: GameStatistics;
   private currentGame: GameSession | null = null;
+  private currentSession: SessionStats | null = null;
+  private achievements: Achievement[] = [];
   private listeners: ((stats: GameStatistics) => void)[] = [];
 
   public static getInstance(): StatisticsService {
@@ -126,8 +138,9 @@ export class StatisticsService {
     return StatisticsService.instance;
   }
 
-  constructor() {
-    this.loadStatistics();
+  private constructor() {
+    this.stats = this.loadStats();
+    this.initializeAchievements();
   }
 
   private initializeDefaultStats(): GameStatistics {
@@ -300,8 +313,9 @@ export class StatisticsService {
       this.stats.highScore = game.score;
     }
     
-    // Average score
-    this.stats.averageScore = Math.round(this.stats.totalScore / this.stats.totalGamesPlayed);
+    // Average score - sıfıra bölme kontrolü
+    this.stats.averageScore = this.stats.totalGamesPlayed > 0 ? 
+      Math.round(this.stats.totalScore / this.stats.totalGamesPlayed) : 0;
     
     // Max combo
     if (game.maxCombo > this.stats.maxCombo) {
@@ -311,7 +325,8 @@ export class StatisticsService {
     // Combo stats
     if (game.maxCombo > 0) {
       this.stats.totalCombos += game.maxCombo;
-      this.stats.averageCombo = Math.round(this.stats.totalCombos / this.stats.totalGamesPlayed);
+      this.stats.averageCombo = this.stats.totalGamesPlayed > 0 ? 
+        Math.round(this.stats.totalCombos / this.stats.totalGamesPlayed) : 0;
     }
     
     // Accuracy
@@ -328,12 +343,19 @@ export class StatisticsService {
       this.stats.bestTimePerLevel[game.level] = gameTime;
     }
     
-    // Average time per level
+    // Average time per level - doğru ortalam hesaplaması için level sayacı gerekli
+    const levelKey = `level_${game.level}_count`;
+    const levelCount = (this.stats as any)[levelKey] || 0;
+    
     if (!this.stats.averageTimePerLevel[game.level]) {
       this.stats.averageTimePerLevel[game.level] = gameTime;
+      (this.stats as any)[levelKey] = 1;
     } else {
+      const currentAvg = this.stats.averageTimePerLevel[game.level];
+      const newCount = levelCount + 1;
       this.stats.averageTimePerLevel[game.level] = 
-        (this.stats.averageTimePerLevel[game.level] + gameTime) / 2;
+        Math.round(((currentAvg * levelCount) + gameTime) / newCount);
+      (this.stats as any)[levelKey] = newCount;
     }
     
     // Theme tracking
@@ -657,17 +679,17 @@ export class StatisticsService {
     }
   }
 
-  private loadStatistics(): void {
+  private loadStats(): GameStatistics {
     try {
       const saved = localStorage.getItem('speedytap_statistics');
       if (saved) {
-        this.stats = { ...this.initializeDefaultStats(), ...JSON.parse(saved) };
+        return { ...this.initializeDefaultStats(), ...JSON.parse(saved) };
       } else {
-        this.stats = this.initializeDefaultStats();
+        return this.initializeDefaultStats();
       }
     } catch (error) {
       console.warn('Failed to load statistics:', error);
-      this.stats = this.initializeDefaultStats();
+      return this.initializeDefaultStats();
     }
   }
 
@@ -693,5 +715,134 @@ export class StatisticsService {
       console.warn('Failed to import statistics:', error);
       return false;
     }
+  }
+
+  private initializeAchievements(): void {
+    const defaultAchievements: Achievement[] = [
+      {
+        id: 'first_game',
+        title: 'İlk Adım',
+        description: 'İlk oyununu tamamla',
+        icon: '🎯',
+        unlocked: false,
+        progress: 0,
+        maxProgress: 1
+      },
+      {
+        id: 'combo_master',
+        title: 'Kombo Ustası',
+        description: '20 kombo yap',
+        icon: '⚡',
+        unlocked: false,
+        progress: 0,
+        maxProgress: 20
+      },
+      {
+        id: 'speed_demon',
+        title: 'Hız Şeytanı',
+        description: '100 tıklama yap (tek oyunda)',
+        icon: '🔥',
+        unlocked: false,
+        progress: 0,
+        maxProgress: 100
+      },
+      {
+        id: 'perfectionist',
+        title: 'Mükemmeliyetçi',
+        description: '%95 accuracy ile oyun bitir',
+        icon: '💎',
+        unlocked: false,
+        progress: 0,
+        maxProgress: 95
+      },
+      {
+        id: 'high_scorer',
+        title: 'Yüksek Skorcu',
+        description: '10,000 puan yap',
+        icon: '👑',
+        unlocked: false,
+        progress: 0,
+        maxProgress: 10000
+      }
+    ];
+    
+    const saved = localStorage.getItem('speedytap_achievements');
+    if (saved) {
+      try {
+        this.achievements = JSON.parse(saved);
+      } catch {
+        this.achievements = defaultAchievements;
+      }
+    } else {
+      this.achievements = defaultAchievements;
+    }
+  }
+
+  checkAchievements(): Achievement[] {
+    const newlyUnlocked: Achievement[] = [];
+    
+    this.achievements.forEach(achievement => {
+      if (achievement.unlocked) return;
+      
+      switch (achievement.id) {
+        case 'first_game':
+          if (this.stats.totalGamesPlayed >= 1) {
+            achievement.progress = 1;
+            achievement.unlocked = true;
+            newlyUnlocked.push({...achievement});
+          }
+          break;
+          
+        case 'combo_master':
+          if (this.stats.maxCombo >= 20) {
+            achievement.progress = Math.min(this.stats.maxCombo, 20);
+            achievement.unlocked = true;
+            newlyUnlocked.push({...achievement});
+          }
+          break;
+          
+        case 'speed_demon':
+          if (this.currentGame && this.currentGame.totalTaps >= 100) {
+            achievement.progress = Math.min(this.currentGame.totalTaps, 100);
+            achievement.unlocked = true;
+            newlyUnlocked.push({...achievement});
+          }
+          break;
+          
+        case 'perfectionist':
+          if (this.currentGame) {
+            const accuracy = this.currentGame.totalTaps > 0 ? 
+              (this.currentGame.hits / this.currentGame.totalTaps) * 100 : 0;
+            if (accuracy >= 95) {
+              achievement.progress = Math.floor(accuracy);
+              achievement.unlocked = true;
+              newlyUnlocked.push({...achievement});
+            }
+          }
+          break;
+          
+        case 'high_scorer':
+          if (this.stats.highScore >= 10000) {
+            achievement.progress = Math.min(this.stats.highScore, 10000);
+            achievement.unlocked = true;
+            newlyUnlocked.push({...achievement});
+          }
+          break;
+      }
+    });
+    
+    if (newlyUnlocked.length > 0) {
+      this.saveAchievements();
+    }
+    
+    return newlyUnlocked;
+  }
+
+  private saveAchievements(): void {
+    localStorage.setItem('speedytap_achievements', JSON.stringify(this.achievements));
+  }
+
+  getAchievements(): Achievement[] {
+    return [...this.achievements];
   }
 } 

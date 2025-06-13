@@ -5,16 +5,49 @@ import './GameMenu.css';
 interface GameMenuProps {
   highScore: number;
   onNewGame: () => void;
+  onModeSelector: () => void;
+  onStatistics: () => void;
+  onDailyChallenges: () => void;
+  onShop: () => void;
   onAbout: () => void;
   onSettings: () => void;
 }
 
-const GameMenu = ({ highScore, onNewGame, onAbout, onSettings }: GameMenuProps) => {
+const GameMenu = ({ 
+  highScore, 
+  onNewGame, 
+  onModeSelector,
+  onStatistics,
+  onDailyChallenges,
+  onShop,
+  onAbout, 
+  onSettings 
+}: GameMenuProps) => {
   const { t } = useTranslation();
 
   const handleNewGame = async () => {
     await audioService.playClick();
     onNewGame();
+  };
+
+  const handleModeSelector = async () => {
+    await audioService.playButtonTap();
+    onModeSelector();
+  };
+
+  const handleStatistics = async () => {
+    await audioService.playButtonTap();
+    onStatistics();
+  };
+
+  const handleDailyChallenges = async () => {
+    await audioService.playButtonTap();
+    onDailyChallenges();
+  };
+
+  const handleShop = async () => {
+    await audioService.playButtonTap();
+    onShop();
   };
 
   const handleAbout = async () => {
@@ -46,12 +79,33 @@ const GameMenu = ({ highScore, onNewGame, onAbout, onSettings }: GameMenuProps) 
 
         <div className="menu-buttons">
           <button className="menu-btn primary" onClick={handleNewGame}>
-            <span>{t('menu.play')}</span>
+            <span>🎯 Hızlı Başlat</span>
           </button>
-          <button className="menu-btn secondary" onClick={handleSettings}>
-            <span>⚙️ {t('menu.settings')}</span>
-          </button>
-          <button className="menu-btn secondary" onClick={handleAbout}>
+          
+          <div className="menu-grid">
+            <button className="menu-btn secondary grid-btn" onClick={handleModeSelector}>
+              <span className="btn-icon">🎮</span>
+              <span className="btn-text">Oyun Modları</span>
+            </button>
+            <button className="menu-btn secondary grid-btn" onClick={handleDailyChallenges}>
+              <span className="btn-icon">📅</span>
+              <span className="btn-text">Günlük Görevler</span>
+            </button>
+            <button className="menu-btn secondary grid-btn shop-btn" onClick={handleShop}>
+              <span className="btn-icon">🏪</span>
+              <span className="btn-text">Mağaza</span>
+            </button>
+            <button className="menu-btn secondary grid-btn" onClick={handleStatistics}>
+              <span className="btn-icon">📊</span>
+              <span className="btn-text">İstatistikler</span>
+            </button>
+            <button className="menu-btn secondary grid-btn" onClick={handleSettings}>
+              <span className="btn-icon">⚙️</span>
+              <span className="btn-text">{t('menu.settings')}</span>
+            </button>
+          </div>
+          
+          <button className="menu-btn tertiary" onClick={handleAbout}>
             <span>{t('menu.about')}</span>
           </button>
         </div>

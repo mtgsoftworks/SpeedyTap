@@ -6,6 +6,9 @@ const config: CapacitorConfig = {
   webDir: 'dist',
   bundledWebRuntime: false,
   
+  // Version info
+  version: '2.0.1',
+  
   // Android optimizasyonları
   server: {
     androidScheme: 'https',

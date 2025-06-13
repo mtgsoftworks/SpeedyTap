@@ -99,8 +99,15 @@
 .menu-buttons {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
   margin-bottom: 30px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  width: 100%;
 }
 
 .menu-btn {
@@ -166,6 +173,42 @@
 
 .menu-btn.secondary:active {
   transform: translateY(0);
+}
+
+/* Shop Button Special Styling */
+.menu-btn.shop-btn {
+  background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  animation: shopPulse 2s ease-in-out infinite;
+}
+
+.menu-btn.shop-btn:hover {
+  background: linear-gradient(135deg, #FF5252, #26A69A);
+  border-color: rgba(255, 215, 0, 0.5);
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+}
+
+.menu-btn.shop-btn .btn-icon {
+  font-size: 24px;
+  animation: shopIconBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes shopPulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(255, 107, 107, 0.6);
+  }
+}
+
+@keyframes shopIconBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 .menu-footer {
