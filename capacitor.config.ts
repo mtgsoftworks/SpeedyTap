@@ -4,10 +4,6 @@ const config: CapacitorConfig = {
   appId: 'com.mtgsoftworks.speedytap',
   appName: 'SpeedyTap',
   webDir: 'dist',
-  bundledWebRuntime: false,
-  
-  // Version info
-  version: '2.0.1',
   
   // Android optimizasyonları
   server: {
@@ -26,7 +22,7 @@ const config: CapacitorConfig = {
     SplashScreen: {
       launchShowDuration: 2000,
       launchAutoHide: true,
-      backgroundColor: '#1a1a1a',
+      backgroundColor: '#1e3a8a',
       androidSplashResourceName: 'splash',
       androidScaleType: 'CENTER_CROP',
       showSpinner: false,
@@ -37,7 +33,7 @@ const config: CapacitorConfig = {
     // Status Bar
     StatusBar: {
       style: 'DARK',
-      backgroundColor: '#1a1a1a',
+      backgroundColor: '#1e3a8a',
       overlaysWebView: false
     },
 

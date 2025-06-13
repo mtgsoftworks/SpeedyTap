@@ -1,9 +1,17 @@
 {
   "name": "speedytap-mobile",
   "private": true,
-  "version": "2.0.1",
+  "version": "3.0.0",
   "type": "module",
   "license": "UNLICENSED",
+  "description": "Advanced mobile touch game with progressive dynamic effects",
+  "author": "MTG",
+  "homepage": "https://github.com/MTG1979/speedytap-mobile",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MTG1979/speedytap-mobile.git"
+  },
+  "keywords": ["mobile", "game", "react", "typescript", "capacitor", "android"],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

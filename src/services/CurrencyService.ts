@@ -140,7 +140,7 @@ export class CurrencyService {
   }
 
   private levelUp(): void {
-    const oldLevel = this.currency.level;
+    // Level progression tracking
     this.currency.level++;
     
     // Level up rewards
@@ -152,7 +152,7 @@ export class CurrencyService {
       this.currency.totalEarned.gems += levelReward.gems;
     }
     
-    console.log(`Level up! ${oldLevel} -> ${this.currency.level}`);
+    // Level up logged in development only
     this.saveCurrencyData();
     
     // Recursive level check (multiple level ups possible)
@@ -173,7 +173,7 @@ export class CurrencyService {
   }
 
   public earnCurrency(source: EarningSource): boolean {
-    const { amount, currency, multiplier = 1, description } = source;
+    const { amount, currency, multiplier = 1 } = source;
     const finalAmount = Math.floor(amount * multiplier);
     
     // Earn currency
@@ -181,7 +181,7 @@ export class CurrencyService {
     this.currency.totalEarned[currency] += finalAmount;
     this.currency.dailyEarnings[currency] += finalAmount;
     
-    console.log(`Earned ${finalAmount} ${currency} from ${description}`);
+    // Currency earning logged in development only
     
     // Check for level up if XP earned
     if (currency === 'xp') {

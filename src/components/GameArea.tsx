@@ -13,6 +13,7 @@ import type { Achievement } from '../services/StatisticsService';
 import PowerUpDisplay from './PowerUpDisplay';
 import ComboDisplay from './ComboDisplay';
 import type { GameData } from '../App';
+import Logger from '../utils/Logger';
 import './GameArea.css';
 import './PowerUpDisplay.css';
 import './ComboDisplay.css';
@@ -297,10 +298,10 @@ const GameArea = ({
   // Oyun başlatma countdown'u
   useEffect(() => {
     if (showCountdown && isInitialized) {
-      console.log('Countdown başlatılıyor:', countdown);
+      Logger.log('Countdown başlatılıyor:', countdown);
       const countdownTimer = setInterval(async () => {
         setCountdown(prev => {
-          console.log('Countdown:', prev);
+          Logger.log('Countdown:', prev);
           if (prev <= 1) {
             setShowCountdown(false);
             startGame();
@@ -312,7 +313,7 @@ const GameArea = ({
         });
       }, 1000);
       return () => {
-        console.log('Countdown timer temizleniyor');
+        Logger.log('Countdown timer temizleniyor');
         clearInterval(countdownTimer);
       };
     }
@@ -346,7 +347,7 @@ const GameArea = ({
 
   // Oyunu başlat
   const startGame = useCallback(() => {
-    console.log('Starting game...');
+    Logger.log('Starting game...');
     setGameRunning(true);
     
     // Önceki timer'ları temizle
@@ -414,7 +415,7 @@ const GameArea = ({
 
   // Oyunu bitir
   const endGame = useCallback(() => {
-    console.log('Oyun bitiriliyor...');
+    Logger.log('Oyun bitiriliyor...');
     setGameRunning(false);
     
     // Timer'ları temizle
@@ -888,7 +889,7 @@ const GameArea = ({
   // Component unmount olduğunda temizlik
   useEffect(() => {
     return () => {
-      console.log('GameArea unmounting...');
+      Logger.log('GameArea unmounting...');
       if (timerRef.current) {
         clearInterval(timerRef.current);
       }

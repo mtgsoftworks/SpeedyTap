@@ -1,4 +1,5 @@
 import { CurrencyService } from './CurrencyService';
+import { StatisticsService } from './StatisticsService';
 
 export interface ShopItem {
   id: string;
@@ -409,9 +410,57 @@ export class ShopService {
         item.isUnlocked = true;
       }
 
-      // Additional unlock conditions check (to be implemented)
+      // Additional unlock conditions check
       if (item.unlockConditions) {
-        // TODO: Check specific conditions like achievements, scores, etc.
+        let conditionsMet = true;
+        
+        for (const condition of item.unlockConditions) {
+          if (condition.startsWith('achievement:')) {
+            const achievementId = condition.replace('achievement:', '');
+            const statsService = StatisticsService.getInstance();
+            const stats = statsService.getStatistics();
+            if (!stats.achievementsUnlocked.includes(achievementId)) {
+              conditionsMet = false;
+              break;
+            }
+          } else if (condition.startsWith('score:')) {
+            const requiredScore = parseInt(condition.replace('score:', ''));
+            const statsService = StatisticsService.getInstance();
+            const stats = statsService.getStatistics();
+            if (stats.highScore < requiredScore) {
+              conditionsMet = false;
+              break;
+            }
+          } else if (condition.startsWith('accuracy:')) {
+            const requiredAccuracy = parseInt(condition.replace('accuracy:', ''));
+            const statsService = StatisticsService.getInstance();
+            const stats = statsService.getStatistics();
+            if (stats.accuracy < requiredAccuracy) {
+              conditionsMet = false;
+              break;
+            }
+          } else if (condition.startsWith('combo:')) {
+            const requiredCombo = parseInt(condition.replace('combo:', ''));
+            const statsService = StatisticsService.getInstance();
+            const stats = statsService.getStatistics();
+            if (stats.maxCombo < requiredCombo) {
+              conditionsMet = false;
+              break;
+            }
+          } else if (condition.startsWith('games_played:')) {
+            const requiredGames = parseInt(condition.replace('games_played:', ''));
+            const statsService = StatisticsService.getInstance();
+            const stats = statsService.getStatistics();
+            if (stats.totalGamesPlayed < requiredGames) {
+              conditionsMet = false;
+              break;
+            }
+          }
+        }
+        
+        if (!conditionsMet) {
+          item.isUnlocked = false;
+        }
       }
 
       // Check if already purchased
