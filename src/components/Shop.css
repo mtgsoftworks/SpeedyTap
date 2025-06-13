@@ -1,9 +1,13 @@
 .shop {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+  max-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   padding: 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
 }
 
 .shop.loading {
@@ -24,6 +28,7 @@
   justify-content: space-between;
   margin-bottom: 20px;
   padding: 0 10px;
+  flex-shrink: 0;
 }
 
 .back-button {
@@ -60,6 +65,7 @@
   text-align: center;
   font-weight: 500;
   animation: slideInDown 0.3s ease-out;
+  flex-shrink: 0;
 }
 
 .purchase-message.success {
@@ -79,6 +85,7 @@
   padding: 20px;
   margin-bottom: 25px;
   backdrop-filter: blur(10px);
+  flex-shrink: 0;
 }
 
 .level-info {
@@ -135,6 +142,7 @@
   padding: 0 5px;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  flex-shrink: 0;
 }
 
 .category-tabs::-webkit-scrollbar {
@@ -183,6 +191,11 @@
   padding: 25px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
 /* Featured Section */
@@ -286,6 +299,8 @@
 @media (max-width: 768px) {
   .shop {
     padding: 15px;
+    max-height: 100vh;
+    overflow: hidden;
   }
   
   .shop-header {
@@ -310,6 +325,9 @@
   
   .shop-content {
     padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
   .deals-grid,
@@ -319,5 +337,58 @@
   
   .stats-grid {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .shop {
+    padding: 10px;
+    max-height: 100vh;
+  }
+  
+  .shop-header {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .back-button {
+    align-self: flex-start;
+  }
+  
+  .shop-title {
+    font-size: 18px;
+  }
+  
+  .category-tabs {
+    gap: 6px;
+    padding: 0;
+  }
+  
+  .category-tab {
+    padding: 8px 12px;
+    min-width: auto;
+  }
+  
+  .category-icon {
+    font-size: 16px;
+  }
+  
+  .category-name {
+    font-size: 11px;
+  }
+  
+  .shop-content {
+    padding: 15px;
+    border-radius: 15px;
+  }
+  
+  .player-info {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .level {
+    font-size: 18px;
   }
 } 
