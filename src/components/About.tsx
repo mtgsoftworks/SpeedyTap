@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import './About.css';
 
 interface AboutProps {
   onBack: () => void;
@@ -19,15 +20,15 @@ const About = ({ onBack }: AboutProps) => {
           <br />
           <p>{t('about.developer')}: <strong>Mesut Taha Güven</strong></p>
           <br />
-          <p>{t('about.version')}: 2.0.0</p>
+          <p>{t('about.version')}: 3.0.0</p>
           <br />
           <div className="copyright">
             <p>{t('common.copyright')}</p>
           </div>
         </div>
         <div className="about-buttons">
-          <button className="about-btn primary" onClick={onBack}>
-            <span>{t('settings.back')}</span>
+          <button className="about-back-btn" onClick={onBack}>
+            <span>← {t('common.back')}</span>
           </button>
         </div>
       </div>
