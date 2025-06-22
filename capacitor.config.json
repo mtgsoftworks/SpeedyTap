@@ -1,0 +1,52 @@
+{
+  "appId": "com.mtgsoftworks.speedytap",
+  "appName": "SpeedyTap",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "cleartext": true,
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "StatusBar": {
+      "style": "dark",
+      "backgroundColor": "#0B1D31"
+    },
+    "SplashScreen": {
+      "launchShowDuration": 3000,
+      "launchAutoHide": true,
+      "backgroundColor": "#0B1D31",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false,
+      "androidSpinnerStyle": "large",
+      "iosSpinnerStyle": "small",
+      "spinnerColor": "#58D1FF",
+      "splashFullScreen": true,
+      "splashImmersive": true,
+      "layoutName": "launch_screen",
+      "useDialog": true
+    },
+    "Haptics": {
+      "enabled": true
+    },
+    "Keyboard": {
+      "resize": "ionic"
+    },
+    "AdMob": {
+      "appId": "ca-app-pub-2923372871861852~1234567890",
+      "initializeForTesting": false,
+      "tagForChildDirectedTreatment": false,
+      "tagForUnderAgeOfConsent": false,
+      "maxAdContentRating": "G",
+      "testDeviceIds": []
+    }
+  },
+  "android": {
+    "allowMixedContent": true,
+    "captureInput": true
+  },
+  "ios": {
+    "contentInset": "automatic"
+  }
+}

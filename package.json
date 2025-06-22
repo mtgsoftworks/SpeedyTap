@@ -1,0 +1,70 @@
+{
+  "name": "speedytap-mobile",
+  "version": "0.1.0",
+  "description": "SpeedyTap - Modern TypeScript mimarisi ile hızlı mobil tıklama oyunu",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "type-check": "tsc --noEmit",
+    "clean": "rimraf dist",
+    "lint": "echo 'Linting not configured yet'",
+    "capacitor:add": "npx cap add",
+    "capacitor:sync": "npm run build && npx cap sync",
+    "capacitor:copy": "npx cap copy",
+    "android:dev": "npm run capacitor:sync && npx cap run android",
+    "android:build": "npm run build && npx cap sync && npx cap build android",
+    "android:open": "npx cap open android",
+    "ios:dev": "npm run capacitor:sync && npx cap run ios",
+    "ios:build": "npm run build && npx cap sync && npx cap build ios",
+    "ios:open": "npx cap open ios",
+    "serve": "npx http-server dist -c-1 -p 8080"
+  },
+  "keywords": [
+    "game",
+    "mobile",
+    "tapping",
+    "typescript",
+    "capacitor",
+    "android",
+    "ios",
+    "pwa",
+    "modern-architecture"
+  ],
+  "author": "Mesut Taha Güven",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor-community/admob": "^7.0.3",
+    "@capacitor/android": "^7.4.0",
+    "@capacitor/cli": "^7.4.0",
+    "@capacitor/core": "^7.4.0",
+    "@capacitor/haptics": "^7.0.1",
+    "@capacitor/splash-screen": "^7.0.1",
+    "@capacitor/status-bar": "^7.0.1",
+    "i18next": "^25.2.1",
+    "i18next-browser-languagedetector": "^8.2.0",
+    "react-i18next": "^15.5.3"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^13.0.0",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.0",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.3",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  }
+}
