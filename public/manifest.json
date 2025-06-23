@@ -1,0 +1,49 @@
+{
+  "name": "SpeedyTap - Quick Reflexes Game",
+  "short_name": "SpeedyTap",
+  "description": "Fast reflex game developed with modern TypeScript architecture",
+  "version": "0.2.0",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0B1D31",
+  "background_color": "#0B1D31",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["games", "entertainment"],
+  "screenshots": [
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+} 

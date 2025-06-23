@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SpeedyTap</string>
+    <string name="title_activity_main">SpeedyTap</string>
+    <string name="package_name">com.speedytap.game</string>
+    <string name="custom_url_scheme">com.speedytap.game</string>
+</resources>
