@@ -85,8 +85,8 @@ npm run build                        # Create web build
 ## 🎯 AdMob Configuration
 
 ### Ad Unit IDs
-- **Interstitial**: `ca-app-pub-2923372871861852/4040639207`
-- **Banner**: `ca-app-pub-2923372871861852/4666227683`
+- **Interstitial**: your_admob_unit_IDs`
+- **Banner**: your_admob_unit_IDs``
 
 ### Advertisement Display Strategy
 1. **Main Menu**: Banner ad placement (bottom section)
