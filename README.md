@@ -1,109 +1,140 @@
-# SpeedyTap v0.1.0 - Mobile Game with AdMob Integration
+# SpeedyTap v0.1.0 - Mobile Game
 
-🎮 **Modern TypeScript mimarisi ile hızlı mobil tıklama oyunu**
+🎮 **Fast-paced mobile tapping game built with modern TypeScript architecture**
 
-## Proje Özellikleri
+[![Google Play Store](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.mtgsoftworks.speedytap&hl=en)
 
-### ⚡ Oyun Mekanikleri
-- Hızlı tepki gerektiren tıklama oyunu
-- Seviye sistemi ve progresyon
-- Yüksek skor takibi
-- Ses efektleri ve haptik geri bildirim
-- Oyun duraklatma/devam etme
+## About
 
-### 📱 Modern Mobil Geliştirme
-- **Capacitor 7**: Cross-platform mobil geliştirme
-- **TypeScript**: Tip güvenliği ve modern JavaScript
-- **Webpack 5**: Modern bundling ve optimizasyon
-- **AdMob Integration**: Banner ve Interstitial reklamlar
+SpeedyTap is an engaging fast-reaction mobile game that challenges players' reflexes and coordination. Built with cutting-edge web technologies and cross-platform compatibility in mind, this game delivers a smooth, responsive gaming experience across multiple devices.
 
-### 🎯 AdMob Reklam Stratejisi
-- **Banner Reklamları**: Ana menüde sürekli görünür
-- **Interstitial Reklamları**: 
-  - Oyun bitişinde otomatik
-  - Her 3 seviyede bir gösterim
-  - Optimal kullanıcı deneyimi için zamanlama
+The game features a progressive difficulty system where players must tap targets as quickly as possible to advance through increasingly challenging levels. With integrated AdMob monetization and modern mobile development practices, SpeedyTap represents a complete commercial mobile game solution.
 
-### 🏗️ Mimari Yapı
-Proje modern yazılım mimarisi kurallarına uygun olarak geliştirilmiştir:
+**🎯 Available on Google Play Store**: [Download SpeedyTap](https://play.google.com/store/apps/details?id=com.mtgsoftworks.speedytap&hl=en)
 
-#### Rule 1: Sacred Folder Structure
+## Project Features
+
+### ⚡ Game Mechanics
+- Fast-reaction tapping gameplay
+- Level system with progression
+- High score tracking
+- Sound effects and haptic feedback
+- Pause/resume functionality
+
+### 📱 Modern Mobile Development
+- **Capacitor 7**: Cross-platform mobile development framework
+- **TypeScript**: Type safety and modern JavaScript features
+- **Webpack 5**: Advanced bundling and optimization
+- **AdMob Integration**: Banner and interstitial advertisements
+
+### 🎯 AdMob Advertising Strategy
+- **Banner Ads**: Persistent display on main menu
+- **Interstitial Ads**:
+  - Automatic display on game over
+  - Shown every 3 levels
+  - Optimized timing for enhanced user experience
+
+## 🏗️ Architecture
+
+This project follows modern software architecture principles:
+
+### Sacred Folder Structure
+
 ```
 src/
-├── api/             # API clients
+├── api/             # API clients and services
 ├── assets/          # Images, fonts, animations  
 ├── components/      # Reusable UI components
-├── config/          # Environment variables
-├── constants/       # App-wide constants
+├── config/          # Environment configuration
+├── constants/       # Application-wide constants
 ├── hooks/           # Custom React hooks
-├── navigation/      # Navigation logic
+├── navigation/      # Navigation logic and routing
 ├── screens/         # Screen components
-├── store/           # Redux Toolkit state
-├── theme/           # Styling and theme
-├── types/           # TypeScript types
-└── utils/           # Helper functions
+├── store/           # Redux Toolkit state management
+├── theme/           # Styling and theming
+├── types/           # TypeScript type definitions
+└── utils/           # Helper functions and utilities
 ```
 
-## 📦 Paket Bilgileri
+## 📦 Package Information
 - **Package ID**: `com.mtgsoftworks.speedytap`
 - **Version**: 0.1.0
 - **Target SDK**: Android 34
-- **Min SDK**: Android 22
+- **Minimum SDK**: Android 22
 
-## 🚀 Geliştirme
+## 🚀 Development
 
-### Kurulum
+### Installation
 ```bash
 npm install
 npx cap sync
 ```
 
-### Development
+### Development Commands
 ```bash
-npm run dev              # Web development server
-npm run android:dev      # Android emulator
+npm run dev              # Start web development server
+npm run android:dev      # Launch Android emulator
 ```
 
 ### Production Build
 ```bash
-npm run build           # Web build
-./android/gradlew assembleRelease  # Android APK
+npm run build                        # Create web build
+./android/gradlew assembleRelease    # Generate Android APK
 ```
 
-## 🎯 AdMob Konfigürasyonu
+## 🎯 AdMob Configuration
 
 ### Ad Unit IDs
 - **Interstitial**: `ca-app-pub-2923372871861852/4040639207`
 - **Banner**: `ca-app-pub-2923372871861852/4666227683`
 
-### Reklam Gösterim Stratejisi
-1. **Ana Menü**: Banner reklam (alt kısım)
-2. **Oyun Bitişi**: Interstitial reklam
-3. **Seviye Geçişi**: Her 3 seviyede interstitial
-4. **Oyun Sırasında**: Banner gizlenir (optimum UX)
+### Advertisement Display Strategy
+1. **Main Menu**: Banner ad placement (bottom section)
+2. **Game Over**: Interstitial ad display
+3. **Level Progression**: Interstitial every 3 levels
+4. **During Gameplay**: Banner ads hidden for optimal UX
 
-## 📱 APK Bilgileri
-- **Dosya**: `SpeedyTap-v0.1.0-MTGSoftworks-AdMob.apk`
-- **İmzalı**: Evet (android.keystore)
-- **AdMob**: Entegre edildi
-- **Boyut**: ~4 MB
+## 📱 APK Information
+- **File**: `SpeedyTap-v0.1.0-MTGSoftworks-AdMob.apk`
+- **Signed**: Yes (android.keystore)
+- **AdMob**: Fully integrated
+- **Size**: ~4 MB
 
-## 🔧 Teknik Detaylar
+## 🔧 Technical Details
 
-### Bağımlılıklar
+### Key Dependencies
 - **@capacitor/core**: 7.4.0
 - **@capacitor-community/admob**: 7.0.3
 - **TypeScript**: 5.6.3
 - **Webpack**: 5.99.9
 
-### Desteklenen Platformlar
+### Supported Platforms
 - ✅ Android (API 22+)
 - ✅ Web/PWA
-- 🔄 iOS (hazırlanıyor)
+- 🔄 iOS (in development)
 
-## 👨‍💻 Geliştirici
+## 👨‍💻 Developer
 **Mesut Taha Güven** - MTG Softworks
+
+*SpeedyTap v0.1.0 - Fast mobile gaming experience with integrated AdMob monetization*
 
 ---
 
-*SpeedyTap v0.1.0 - AdMob entegrasyonlu hızlı mobil oyun deneyimi* 
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies with `npm install`
+3. Sync Capacitor with `npx cap sync`
+4. Run development server with `npm run dev`
+5. For mobile testing, use `npm run android:dev`
+
+## Contributing
+
+This project follows modern development practices including:
+- TypeScript for type safety
+- Component-based architecture
+- State management with Redux Toolkit
+- Responsive design principles
+- Performance optimization
+
+For questions or contributions, please contact MTG Softworks.
